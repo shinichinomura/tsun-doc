@@ -37,6 +37,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'amazon-ecs'
+# json-1.8.3 が ruby 2.4.0 に対応していないので 1.8.5 を使う（omniauth-twitter が json のバージョン1系に依存している）
+gem 'json', github: 'flori/json', branch: 'v1.8'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
