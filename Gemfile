@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'slim-rails'
+
 gem 'amazon-ecs'
 # json-1.8.3 が ruby 2.4.0 に対応していないので 1.8.5 を使う（omniauth-twitter が json のバージョン1系に依存している）
 gem 'json', github: 'flori/json', branch: 'v1.8'
