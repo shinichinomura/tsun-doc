@@ -1,0 +1,5 @@
+ja:
+  sessions:
+    new:
+      title: ログイン
+      login_with_twitter: Twitterアカウントでログイン

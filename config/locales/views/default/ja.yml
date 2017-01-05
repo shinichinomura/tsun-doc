@@ -1,0 +1,4 @@
+ja:
+  default:
+    index:
+      welcome: ようこそ、%{username}さん

@@ -1,0 +1,5 @@
+ja:
+  omniauth_callbacks:
+    twitter:
+      logged_in: ログインしました。
+      signed_up: 会員登録が完了しました。
