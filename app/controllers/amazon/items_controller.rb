@@ -15,6 +15,7 @@ class Amazon::ItemsController < ApplicationController
       {
         asin: item.get('ASIN'),
         title: item.get('ItemAttributes/Title'),
+        url: item.get('DetailPageURL'),
         small_image_url: item.get('SmallImage/URL'),
         large_image_url: item.get('LargeImage/URL'),
       }

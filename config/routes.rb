@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'omniauth_callbacks#twitter'
 
   resources :sessions, only: [:new]
+
+  resources :user_amazon_books, only: [:create]
   
   namespace :amazon do
     resources :items, only: [] do

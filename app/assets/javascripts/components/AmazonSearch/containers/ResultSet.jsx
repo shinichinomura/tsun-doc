@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
+import request from 'superagent'
 
 import * as ResultSetActions from '../action_creators/ResultSet.jsx'
 
@@ -15,8 +16,16 @@ function mapDispatchToProps(dispatch) {
 }
 
 class ResultSet extends Component {
-  select_item(event, asin) {
-    this.props.actions.select_item()
+  select_item(event, asin, title, url) {
+    const success_action = this.props.actions.select_item
+
+    request
+      .post('/user_amazon_books')
+      .send({asin, title, url, authenticity_token: document.getElementsByName('csrf-token')[0]['content']})
+      .end(function(error, response){
+        console.log(response.body);
+        success_action()
+      })
   }
 
   render() {
@@ -30,7 +39,7 @@ class ResultSet extends Component {
         { this.props.resultSet.length > 0 &&
           <ul className="items">
           { this.props.resultSet.map(item =>
-            <li data-asin={item.asin} key={item.asin} onClick={(event) => this.select_item(event, item.asin)}>
+            <li data-asin={item.asin} key={item.asin} onClick={(event) => this.select_item(event, item.asin, item.title, item.url)}>
               <img src={item.small_image_url} />
               {item.title}
             </li>
