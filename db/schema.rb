@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109143910) do
+ActiveRecord::Schema.define(version: 20170109145316) do
+
+  create_table "amazon_book_dimensions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer  "amazon_book_id",            null: false
+    t.string   "side",           limit: 16, null: false
+    t.integer  "size",                      null: false
+    t.string   "unit",           limit: 64, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["amazon_book_id"], name: "index_amazon_book_dimensions_on_amazon_book_id", using: :btree
+  end
 
   create_table "amazon_book_page_counts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "amazon_book_id",  null: false
@@ -64,6 +74,7 @@ ActiveRecord::Schema.define(version: 20170109143910) do
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
+  add_foreign_key "amazon_book_dimensions", "amazon_books", on_update: :cascade, on_delete: :cascade
   add_foreign_key "amazon_book_page_counts", "amazon_books", on_update: :cascade, on_delete: :cascade
   add_foreign_key "amazon_book_thumbnails", "amazon_books", on_update: :cascade, on_delete: :cascade
   add_foreign_key "user_amazon_books", "amazon_books", on_update: :cascade, on_delete: :cascade
