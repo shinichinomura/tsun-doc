@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109130153) do
+ActiveRecord::Schema.define(version: 20170109140858) do
+
+  create_table "amazon_book_thumbnails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer  "amazon_book_id",              null: false
+    t.string   "url",            limit: 1024, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["amazon_book_id"], name: "index_amazon_book_thumbnails_on_amazon_book_id", using: :btree
+  end
 
   create_table "amazon_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "asin",       limit: 16,   null: false
@@ -48,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170109130153) do
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
+  add_foreign_key "amazon_book_thumbnails", "amazon_books", on_update: :cascade, on_delete: :cascade
   add_foreign_key "user_amazon_books", "amazon_books", on_update: :cascade, on_delete: :cascade
   add_foreign_key "user_amazon_books", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "user_auths", "users", on_update: :cascade, on_delete: :cascade

@@ -1,4 +1,7 @@
 class AmazonBook < ApplicationRecord
+  has_one :thumbnail,
+    class_name: 'AmazonBookThumbnail'
+
   validates :asin,
     presence: true,
     length: { maximum: 16 }
