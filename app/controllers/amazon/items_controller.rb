@@ -18,6 +18,7 @@ class Amazon::ItemsController < ApplicationController
         url: item.get('DetailPageURL'),
         small_image_url: item.get('SmallImage/URL'),
         large_image_url: item.get('LargeImage/URL'),
+        number_of_pages: item.get('ItemAttributes/NumberOfPages'),
       }
     end
 

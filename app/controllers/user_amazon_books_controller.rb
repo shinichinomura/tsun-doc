@@ -10,6 +10,10 @@ class UserAmazonBooksController < ApplicationController
         thumbnail.url = params[:thumbnail_url]
       end
 
+      AmazonBookPageCount.find_or_create_by!(amazon_book: amazon_book) do |page_count|
+        page_count.number_of_pages = params[:number_of_pages]
+      end
+
       if current_user.user_amazon_books.where(amazon_book: amazon_book).present?
         render json: {
           result: false,
