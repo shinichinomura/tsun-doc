@@ -6,4 +6,4 @@ Amazon::Ecs.configure do |options|
   options[:associate_tag] = ENV['AMAZON_ASSOCIATE_TAG']
 end
 
-Amazon::Ecs::debug = true if Rails.env.development?
+# Amazon::Ecs::debug = true if Rails.env.development?
