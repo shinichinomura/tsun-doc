@@ -22,6 +22,8 @@ class InputForm extends Component {
     const keyword = this.searchInput.value
     const searchIndex = this.props.searchIndex
 
+    event.preventDefault()
+
     request
       .get('/amazon/items/search')
       .query({ keyword, search_index: searchIndex })
@@ -47,18 +49,20 @@ class InputForm extends Component {
     const { actions } = this.props;
 
     return (
-      <div>
-        <div>
-          <input type="text" name="keyword" value={this.props.keyword} ref={node => (this.searchInput = node)} onChange={(event) => this.change(event)} />
+      <form className="form-inline">
+        <input type="text" className="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0" name="keyword" value={this.props.keyword} ref={node => (this.searchInput = node)} onChange={(event) => this.change(event)} />
+        <div className="form-check form-check-inline">
+          <label className="form-check-label mb-2 mb-sm-0 mr-2" htmlFor="search_index_books">
+            <input type="radio" name="search_index" className="form-check-input mr-1" id="search_index_books" value="Books" onChange={(event) => this.searchIndexChanged(event, 'Books')} checked={this.props.searchIndex === 'Books'} />
+            Books
+          </label>
+          <label className="form-check-label mb-2 mb-sm-0 mr-2" htmlFor="search_index_kindle_store">
+            <input type="radio" name="search_index" className="form-check-input mr-1" id="search_index_kindle_store" value="KindleStore" onChange={(event) => this.searchIndexChanged(event, 'KindleStore')} checked={this.props.searchIndex === 'KindleStore'} />
+            KindleStore
+          </label>
         </div>
-        <div>
-          <input type="radio" name="search_index" id="search_index_books" value="Books" onChange={(event) => this.searchIndexChanged(event, 'Books')} checked={this.props.searchIndex === 'Books'} /><label htmlFor="search_index_books">Books</label>
-          <input type="radio" name="search_index" id="search_index_kindle_store" value="KindleStore" onChange={(event) => this.searchIndexChanged(event, 'KindleStore')} checked={this.props.searchIndex === 'KindleStore'} /><label htmlFor="search_index_kindle_store">KindleStore</label>
-        </div>
-        <div>
-          <button onClick={(event) => this.search(event)}>検索</button>
-        </div>
-      </div>
+        <button className="btn btn-primary btn-sm" onClick={(event) => this.search(event)}>検索</button>
+      </form>
     )
   }
 }
