@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+
   root to: 'default#index'
 
+  get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get '/auth/:provider/callback', to: 'omniauth_callbacks#twitter'
 
   resources :sessions, only: [:new]

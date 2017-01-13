@@ -26,6 +26,6 @@ class OmniauthCallbacksController < ApplicationController
       flash[:notice] = I18n.t(:signed_up, scope: i18n_scope)
     end
     
-    redirect_to root_path
+    redirect_to dashboard_path
   end
 end

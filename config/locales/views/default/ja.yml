@@ -1,4 +1,5 @@
 ja:
   default:
     index:
-      welcome: ようこそ、%{username}さん
+      title: 積ん読.com
+      login: ログイン
