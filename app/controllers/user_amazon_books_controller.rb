@@ -41,4 +41,14 @@ class UserAmazonBooksController < ApplicationController
       end
     end
   end
+
+  def destroy
+    user_amazon_book = current_user.user_amazon_books.find(params[:id])
+
+    user_amazon_book.destroy!
+
+    flash[:notice] = I18n.t('user_amazon_books.destroy.success')
+
+    redirect_to dashboard_path
+  end
 end

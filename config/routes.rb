@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new]
 
-  resources :user_amazon_books, only: [:create]
+  resources :user_amazon_books, only: [:create, :destroy]
   
   namespace :amazon do
     resources :items, only: [] do

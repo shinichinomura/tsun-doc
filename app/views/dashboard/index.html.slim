@@ -2,3 +2,19 @@
 
 = t('.welcome', username: current_user.username)
 = react_component('AmazonSearch')
+
+.user_amazon_books
+  ul.pl-0
+    - @user_amazon_books.each do |user_amazon_book|
+      li.list-unstyled.my-2.py-2.px-2
+        .operations
+          = link_to user_amazon_book_path(user_amazon_book), method: :delete do
+            i.trash.fa.fa-trash-o aria-hidden="true"
+        .media
+          span.image-container
+            = image_tag user_amazon_book.amazon_book.thumbnail.url, class: 'mr-2' if user_amazon_book.amazon_book.thumbnail.present?
+          .media-body
+            h3
+              = user_amazon_book.amazon_book.title
+            .created_at
+              = l(user_amazon_book.created_at.to_date, format: :default)

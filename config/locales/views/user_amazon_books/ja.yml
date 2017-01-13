@@ -3,3 +3,5 @@ ja:
     create:
       success: 積ん読を登録しました。
       already_exists: すでに登録済みです。
+    destroy:
+      success: 積ん読を削除しました。
