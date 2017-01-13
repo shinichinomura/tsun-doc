@@ -46,7 +46,7 @@ class ResultSet extends Component {
               </span>
               <div className="media-body">
                 <h3><a href={item.url} target="_blank">{item.title}</a></h3>
-                <button type="button" className="btn btn-secondary btn-sm" onClick={(event) => this.select_item(event, item.asin, item.title, item.url, item.small_image_url, item.number_of_pages, item.dimensions.width, item.dimensions.height, item.dimensions.length)}>積ん読する</button>
+                <button type="button" className="btn btn-secondary btn-sm" onClick={(event) => this.select_item(event, item.asin, item.title, item.url, item.small_image_url, item.number_of_pages, item.dimensions.width, item.dimensions.height, item.dimensions.length)}><i className="fa fa-book mr-2" aria-hidden="true"></i>積ん読する</button>
               </div>
             </li>
           )}
