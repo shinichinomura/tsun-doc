@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import request from 'superagent'
+import classNames from 'classnames';
 
 import * as ResultSetActions from '../action_creators/ResultSet.jsx'
 
@@ -30,18 +31,23 @@ class ResultSet extends Component {
 
   render() {
     return (
-      <div>
+      <div className={classNames('amazon_search-result_set arrow_box', { empty_result_set: this.props.resultSet.length == 0 })}>
         { this.props.error_message.length > 0 &&
           <div className="error">
             {this.props.error_message}
           </div>
         }
         { this.props.resultSet.length > 0 &&
-          <ul className="items">
+          <ul className="items list-unstyled">
           { this.props.resultSet.map(item =>
-            <li data-asin={item.asin} key={item.asin} onClick={(event) => this.select_item(event, item.asin, item.title, item.url, item.small_image_url, item.number_of_pages, item.dimensions.width, item.dimensions.height, item.dimensions.length)}>
-              <img src={item.small_image_url} />
-              {item.title}
+            <li className="media my-3" data-asin={item.asin} key={item.asin}>
+              <span className="image-container mr-2">
+                <img src={item.small_image_url} />
+              </span>
+              <div className="media-body">
+                <h3><a href={item.url} target="_blank">{item.title}</a></h3>
+                <button type="button" className="btn btn-secondary btn-sm" onClick={(event) => this.select_item(event, item.asin, item.title, item.url, item.small_image_url, item.number_of_pages, item.dimensions.width, item.dimensions.height, item.dimensions.length)}>積ん読する</button>
+              </div>
             </li>
           )}
           </ul>

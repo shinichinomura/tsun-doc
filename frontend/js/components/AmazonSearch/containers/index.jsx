@@ -4,7 +4,7 @@ import InputForm from './InputForm.jsx'
 import ResultSet from './ResultSet.jsx'
 
 const Root = () => (
-  <div>
+  <div className="amazon_search">
     <InputForm />
     <ResultSet />
   </div>
