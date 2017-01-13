@@ -31,4 +31,7 @@ test:
 
 production:
   <<: *default
-  database: tsun-doc_production
+  host: <%= ENV["DATABASE_HOST"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  database: tsun-doc
