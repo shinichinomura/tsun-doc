@@ -45,7 +45,6 @@ gem 'json', github: 'flori/json', branch: 'v1.8'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
-gem 'browserify-rails'
 gem 'react-rails'
 
 gem 'bootstrap', '~> 4.0.0.alpha6'
