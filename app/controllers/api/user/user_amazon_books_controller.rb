@@ -8,4 +8,16 @@ class Api::User::UserAmazonBooksController < ApplicationController
 
     render json: @user_amazon_books
   end
+
+  def update
+    user_amazon_book = current_user.user_amazon_books.find(params[:id])
+
+    user_amazon_book.update_attributes!(
+      params.require(:user_amazon_book).permit(:added_on)
+    )
+
+    render json: {
+      result: true
+    }
+  end
 end

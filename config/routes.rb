@@ -20,8 +20,9 @@ Rails.application.routes.draw do
   namespace :api do
     resources :user_amazon_books, only: [:index]
 
+    # ログイン中のユーザー用のAPI郡
     namespace :user do
-      resources :user_amazon_books, only: [:index]
+      resources :user_amazon_books, only: [:index, :update]
     end
   end
 end

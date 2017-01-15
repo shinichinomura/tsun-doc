@@ -18,5 +18,5 @@
           .media-body
             h3
               = user_amazon_book.amazon_book.title
-            .created_at
-              = l(user_amazon_book.created_at.to_date, format: :default)
+            .added_on
+              = react_component('UserAmazonBookAddedDate', user_amazon_book: { id: user_amazon_book.id, added_on: user_amazon_book.added_on })
