@@ -23,7 +23,7 @@ html
           button.navbar-toggler.navbar-toggler-right. type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             span.navbar-toggler-icon
           = link_to root_path, class: 'navbar-brand' do
-            = image_tag 'logo.png', srcset: "#{image_path('logo@2x.png')} 2x", size: '169x38'
+            = image_tag 'logo.png', class: 'clickable', srcset: "#{image_path('logo@2x.png')} 2x", size: '169x38'
           #navbarSupportedContent.collapse.navbar-collapse
             ul.navbar-nav.mr-auto
               - if logged_in?

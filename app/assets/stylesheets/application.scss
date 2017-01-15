@@ -42,6 +42,14 @@ button {
   cursor: pointer;
 }
 
+img {
+  &.clickable {
+    &:hover {
+      opacity: .75;
+    }
+  }
+}
+
 .arrow_box {
 	position: relative;
 	background: #fff;
