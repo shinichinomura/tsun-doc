@@ -16,4 +16,10 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :api do
+    namespace :user do
+      resources :user_amazon_books, only: [:index]
+    end
+  end
 end
