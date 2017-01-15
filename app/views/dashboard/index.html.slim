@@ -1,10 +1,9 @@
 - content_for(:additional_javascript, javascript_include_tag('dashboard/application', 'data-turbolinks-track': 'reload'))
 - content_for(:title, t('.title'))
 
-= t('.welcome', username: current_user.username)
-= react_component('AmazonSearch')
+#tsun_doc-chart.my-2
 
-#tsun_doc-chart
+= react_component('AmazonSearch')
 
 .user_amazon_books
   ul.pl-0

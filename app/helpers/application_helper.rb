@@ -10,4 +10,8 @@ module ApplicationHelper
     path = manifest[path] if manifest && manifest[path].present?
     "/dist/#{path}"
   end
+
+  def logged_in?
+    current_user.present?
+  end
 end

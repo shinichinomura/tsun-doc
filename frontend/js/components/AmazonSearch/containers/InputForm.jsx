@@ -50,7 +50,7 @@ class InputForm extends Component {
 
     return (
       <form className="form-inline">
-        <div className="input-group input-group-sm">
+        <div className="input-group">
           <div className="input-group-btn">
             <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.props.searchIndex == 'Books' ? '紙の本から' : 'Kindleから'}</button>
             <div className="dropdown-menu">

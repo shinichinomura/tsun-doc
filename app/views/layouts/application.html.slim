@@ -17,6 +17,27 @@ html
       ul
       - flash.each do |key, value|
         li = value
-    h1 = yield(:title)
-    = yield
+    .container
+      #Navigation
+        nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+          button.navbar-toggler.navbar-toggler-right. type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            span.navbar-toggler-icon
+          = link_to root_path, class: 'navbar-brand' do
+            = image_tag 'logo.png', srcset: "#{image_path('logo@2x.png')} 2x", size: '169x38'
+          #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+              - if logged_in?
+                li.nav-item
+                  = link_to dashboard_path do
+                    i.fa.fa-home.mr-1 aria-hidden="true"
+                    = t('.dashboard')
+              - else
+                li.nav-item
+                  = link_to new_session_path do
+                    i.fa.fa-user-circle-o.mr-1 aria-hidden="true"
+                    = t('.sign_in')
+      #Header
+        h1.py-4 = yield(:title)
+      #Content
+        = yield
 

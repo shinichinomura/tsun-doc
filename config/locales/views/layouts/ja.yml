@@ -1,0 +1,6 @@
+ja:
+  layouts:
+    application:
+      site_name: Tsun-Doc
+      sign_in: ログイン
+      dashboard: マイページ
