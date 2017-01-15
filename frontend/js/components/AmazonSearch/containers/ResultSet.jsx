@@ -40,7 +40,7 @@ class ResultSet extends Component {
         { this.props.resultSet.length > 0 &&
             <div>
               <div className="close-button">
-                <i className="fa fa-window-close" area-hidden="true" onClick={(event) => this.props.actions.closeResultSet()}></i>
+                <i className="fa fa-window-close" aria-hidden="true" onClick={(event) => this.props.actions.closeResultSet()}></i>
               </div>
               <ul className="items list-unstyled">
                 { this.props.resultSet.map(item =>
