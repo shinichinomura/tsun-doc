@@ -8,6 +8,12 @@
     top: 40px;
     width: 300px;
 
+    div.close-button {
+      text-align: right;
+      color: #ccc;
+      cursor: pointer;
+    }
+
     &.empty_result_set {
       display: none;
     }

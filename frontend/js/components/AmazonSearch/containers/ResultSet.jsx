@@ -38,19 +38,24 @@ class ResultSet extends Component {
             </div>
         }
         { this.props.resultSet.length > 0 &&
-            <ul className="items list-unstyled">
-              { this.props.resultSet.map(item =>
-                <li className="media my-3" data-asin={item.asin} key={item.asin}>
-                  <span className="image-container mr-2">
-                    <img src={item.small_image_url} />
-                  </span>
-                  <div className="media-body">
-                    <h3><a href={item.url} target="_blank">{item.title}</a></h3>
-                    <button type="button" className="btn btn-secondary btn-sm" onClick={(event) => this.select_item(event, item.asin, item.title, item.url, item.small_image_url, item.number_of_pages, item.dimensions.width, item.dimensions.height, item.dimensions.length)}><i className="fa fa-book mr-2" aria-hidden="true"></i>積ん読する</button>
-                  </div>
-                </li>
-              )}
-            </ul>
+            <div>
+              <div className="close-button">
+                <i className="fa fa-window-close" area-hidden="true" onClick={(event) => this.props.actions.closeResultSet()}></i>
+              </div>
+              <ul className="items list-unstyled">
+                { this.props.resultSet.map(item =>
+                  <li className="media my-3" data-asin={item.asin} key={item.asin}>
+                    <span className="image-container mr-2">
+                      <img src={item.small_image_url} />
+                    </span>
+                    <div className="media-body">
+                      <h3><a href={item.url} target="_blank">{item.title}</a></h3>
+                      <button type="button" className="btn btn-secondary btn-sm" onClick={(event) => this.select_item(event, item.asin, item.title, item.url, item.small_image_url, item.number_of_pages, item.dimensions.width, item.dimensions.height, item.dimensions.length)}><i className="fa fa-book mr-2" aria-hidden="true"></i>積ん読する</button>
+                    </div>
+                  </li>
+                )}
+              </ul>
+            </div>
         }
       </div>
     )

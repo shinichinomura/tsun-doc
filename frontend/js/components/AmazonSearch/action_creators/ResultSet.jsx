@@ -3,3 +3,9 @@ export function select_item() {
     type: 'SELECT_ITEM'
   }
 }
+
+export function closeResultSet() {
+  return {
+    type: 'CLOSE_RESULT_SET'
+  }
+}

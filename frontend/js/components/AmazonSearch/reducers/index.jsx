@@ -35,6 +35,10 @@ export default function inputForm(state, action) {
         resultSet: [],
         error_message: '',
       }
+    case 'CLOSE_RESULT_SET':
+      return Object.assign({}, state, {
+        resultSet: []
+      });
     default:
       return {
         keyword: '',
