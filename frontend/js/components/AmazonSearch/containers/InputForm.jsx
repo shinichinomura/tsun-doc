@@ -50,18 +50,19 @@ class InputForm extends Component {
 
     return (
       <form className="form-inline">
-        <input type="text" className="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0" name="keyword" value={this.props.keyword} ref={node => (this.searchInput = node)} onChange={(event) => this.change(event)} />
-        <div className="form-check form-check-inline">
-          <label className="form-check-label mb-2 mb-sm-0 mr-2" htmlFor="search_index_books">
-            <input type="radio" name="search_index" className="form-check-input mr-1" id="search_index_books" value="Books" onChange={(event) => this.searchIndexChanged(event, 'Books')} checked={this.props.searchIndex === 'Books'} />
-            Books
-          </label>
-          <label className="form-check-label mb-2 mb-sm-0 mr-2" htmlFor="search_index_kindle_store">
-            <input type="radio" name="search_index" className="form-check-input mr-1" id="search_index_kindle_store" value="KindleStore" onChange={(event) => this.searchIndexChanged(event, 'KindleStore')} checked={this.props.searchIndex === 'KindleStore'} />
-            KindleStore
-          </label>
+        <div className="input-group input-group-sm">
+          <div className="input-group-btn">
+            <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.props.searchIndex == 'Books' ? '紙の本から' : 'Kindleから'}</button>
+            <div className="dropdown-menu">
+              <span className="dropdown-item" onClick={(event) => this.searchIndexChanged(event, 'KindleStore')}>Kindleから</span>
+              <span className="dropdown-item" onClick={(event) => this.searchIndexChanged(event, 'Books')}>紙の本から</span>
+            </div>
+          </div>
+          <input type="text" className="form-control" name="keyword" value={this.props.keyword} ref={node => (this.searchInput = node)} onChange={(event) => this.change(event)} />
+          <span className="input-group-btn">
+            <button className="btn btn-primary" type="button" onClick={(event) => this.search(event)}>検索</button>
+          </span>
         </div>
-        <button className="btn btn-primary btn-sm" onClick={(event) => this.search(event)}>検索</button>
       </form>
     )
   }
