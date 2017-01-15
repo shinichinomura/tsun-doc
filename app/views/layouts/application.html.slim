@@ -8,7 +8,11 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    - if Rails.application.assets.find_asset("#{params[:controller]}/application")
+    / resolve_asset_path は将来のバージョンでなくなるかも
+    / https://github.com/rails/sprockets-rails/issues/311
+    /
+    / ちなみに Rails.application.assets.find_asset は production 環境で動作しない
+    - if resolve_asset_path("#{params[:controller]}/application")
       = javascript_include_tag "#{params[:controller]}/application", 'data-turbolinks-track': 'reload'
     = javascript_include_tag assets_path('main.js'), 'data-turbolinks-track': 'reload'
   body
