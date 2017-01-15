@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109145316) do
+ActiveRecord::Schema.define(version: 20170115042358) do
 
   create_table "amazon_book_dimensions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "amazon_book_id",            null: false
@@ -50,8 +50,10 @@ ActiveRecord::Schema.define(version: 20170109145316) do
   create_table "user_amazon_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "user_id",        null: false
     t.integer  "amazon_book_id", null: false
+    t.date     "added_on",       null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["added_on"], name: "index_user_amazon_books_on_added_on", using: :btree
     t.index ["amazon_book_id"], name: "index_user_amazon_books_on_amazon_book_id", using: :btree
     t.index ["user_id", "amazon_book_id"], name: "index_user_amazon_books_on_user_id_and_amazon_book_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_user_amazon_books_on_user_id", using: :btree

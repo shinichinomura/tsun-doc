@@ -32,7 +32,7 @@ class UserAmazonBooksController < ApplicationController
           message: I18n.t('user_amazon_books.create.already_exists')
         }
       else
-        current_user.user_amazon_books.create!(amazon_book: amazon_book)
+        current_user.user_amazon_books.create!(amazon_book: amazon_book, added_on: Date.current)
 
         render json: {
           result: true,
