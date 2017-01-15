@@ -8,6 +8,8 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    - if Rails.application.assets.find_asset("#{params[:controller]}/application")
+      = javascript_include_tag "#{params[:controller]}/application", 'data-turbolinks-track': 'reload'
     = javascript_include_tag assets_path('main.js'), 'data-turbolinks-track': 'reload'
   body
     - if flash.present?
